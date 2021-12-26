@@ -1,0 +1,26 @@
+DECLARE @TheCatch INT = FLOOR(RAND()*(3-1+1)+1) 
+DECLARE @TheCatch2 INT = FLOOR(RAND()*(3-1+1)+1) 
+--DECLARE @Winner VARCHAR
+
+select --@TheCatch AS 'Player 1', 
+CASE 
+ WHEN @TheCatch = 1 THEN 'Rock'
+ WHEN @TheCatch = 2 THEN 'Paper'
+ WHEN @TheCatch = 3 THEN 'Scissors'
+    END AS 'Player 1',
+   -- @TheCatch2 AS 'Player 2', 
+CASE 
+ WHEN @TheCatch2 = 1 THEN 'Rock'
+ WHEN @TheCatch2 = 2 THEN 'Paper'
+ WHEN @TheCatch2 = 3 THEN 'Scissors'
+    END AS 'Player 2',
+CASE 
+WHEN @TheCatch = 1 AND @TheCatch2 = 3 THEN 'Player 1 Wins'
+WHEN @TheCatch = 2 AND @TheCatch2 = 1 THEN 'Player 1 Wins'
+WHEN @TheCatch = 3 AND @TheCatch2 = 2 THEN 'Player 1 Wins'
+WHEN @TheCatch = 3 AND @TheCatch2 = 1 THEN 'Player 2 Wins'
+WHEN @TheCatch = 1 AND @TheCatch2 = 2 THEN 'Player 2 Wins'
+WHEN @TheCatch = 2 AND @TheCatch2 = 3 THEN 'Player 2 Wins' 
+WHEN @TheCatch = 1 AND @TheCatch2 = 1 THEN 'Tie'
+WHEN @TheCatch = 2 AND @TheCatch2 = 2 THEN 'Tie'
+WHEN @TheCatch = 3 AND @TheCatch2 = 3 THEN 'Tie' END AS 'The Winner'
